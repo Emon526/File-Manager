@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'package:filemanager/helpers/colors/app_color.dart';
 import 'package:filemanager/screens/files/utils/menu/menubar.dart';
 import 'package:filemanager/screens/files/utils/modifyList/modifyList.dart';
@@ -55,3 +56,17 @@ class FileScreen extends StatelessWidget {
     );
   }
 }
+=======
+import 'package:flutter/material.dart';
+
+class FileScreen extends StatelessWidget {
+  const FileScreen({ Key? key }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      
+    );
+  }
+}
+>>>>>>> 511ce1d194a7d834c3aa9e4f34a2febf9f7966c4
