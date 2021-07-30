@@ -5,7 +5,6 @@ class StorageController extends GetxController{
   bool? isPermit;
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     _getPermission();
     

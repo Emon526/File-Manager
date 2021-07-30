@@ -15,7 +15,10 @@ class FileManagerApp extends StatelessWidget {
       initialRoute: '/',
       defaultTransition: Transition.zoom,
       getPages: [
-        GetPage(name: '/', page: () => HomeScreen(), binding: BindingStorageController()),
+        GetPage(
+            name: '/',
+            page: () => HomeScreen(),
+            binding: BindingStorageController()),
       ],
     );
   }

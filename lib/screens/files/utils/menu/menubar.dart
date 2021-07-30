@@ -1,6 +1,7 @@
 import 'package:filemanager/helpers/colors/app_color.dart';
 import 'package:filemanager/helpers/widget/text.dart';
 import 'package:flutter/material.dart';
+import 'package:popup_menu_title/popup_menu_title.dart';
 
 class MenuAre extends StatelessWidget {
   const MenuAre({Key? key}) : super(key: key);
@@ -50,16 +51,16 @@ class MenuAre extends StatelessWidget {
       icon: const Icon(Icons.menu),
       tooltip: 'Show menu',
       itemBuilder: (context) => [
-        // PopupMenuTitle(
-        //   title: 'Select',
-        //   overflow: TextOverflow.fade,
-        //   // The text style below is the default style, but is specified
-        //   // here as an example of how to do so.
-        //   textStyle: TextStyle(
-        //     fontWeight: FontWeight.w600,
-        //     color: Theme.of(context).primaryColor,
-        //   ),
-        // ),
+        PopupMenuTitle(
+          title: 'Select',
+          overflow: TextOverflow.fade,
+          // The text style below is the default style, but is specified
+          // here as an example of how to do so.
+          textStyle: TextStyle(
+            fontWeight: FontWeight.w600,
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
         PopupMenuItem<Never>(child: const Text('name')),
         PopupMenuItem<Never>(child: const Text('size')),
         PopupMenuItem<Never>(child: const Text('date')),

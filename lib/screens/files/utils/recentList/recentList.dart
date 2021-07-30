@@ -28,7 +28,7 @@ class RecentList extends StatelessWidget {
                 return Padding(
                   padding: EdgeInsets.only(right: index == 9 ? 15.0 : 0.0),
                   child: RecentFileItemWidger(
-                    imageUrl: "assets/image/testimage.jpg",
+                    imageUrl: "assets/images/testimage.jpg",
                     title: "Nature",
                     isVideo: true,
                     tap: () {},

@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       // Storage tab
                       StorageScreen(),
-                      // Files tab
+                      // files screen
                       FileScreen(),
                     ],
                   ),
