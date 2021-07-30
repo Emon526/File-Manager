@@ -1,0 +1,1 @@
+const RecentFileT = "Recent File";
