@@ -21,16 +21,19 @@ class MenuAre extends StatelessWidget {
                 EdgeInsets.only(left: 14.0, right: 14.0, top: 5.0, bottom: 5.0),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(7.0),
-                color: AppColor.whitColor),
+                color: AppColor.primaryButtonTextColor),
             child: Row(
               children: [
-                sText("Modified", AppColor.titleColor, 17.0, FontWeight.bold),
+                // sText("Modified", AppColor.titleColor, 17.0, FontWeight.bold),
+                SingleLineText(
+                  text: "Modified",
+                ),
                 SizedBox(
                   width: 5.0,
                 ),
                 Icon(
                   Icons.arrow_downward,
-                  color: AppColor.titleColor,
+                  color: AppColor.primaryTextColor,
                   size: 14.0,
                 ),
               ],
@@ -44,7 +47,7 @@ class MenuAre extends StatelessWidget {
 
   Widget _buildMenuButton() {
     return PopupMenuButton(
-      color: AppColor.whitColor,
+      color: AppColor.primaryButtonTextColor,
       onSelected: (selcted) {
         print(selcted);
       },

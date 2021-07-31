@@ -4,20 +4,6 @@ import 'package:file_manager/file_manager.dart';
 import 'package:flutter/material.dart';
 
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomePage(),
-    );
-  }
-}
-
 class HomePage extends StatelessWidget {
   final FileManagerController controller = FileManagerController();
 
@@ -163,6 +149,7 @@ class HomePage extends StatelessWidget {
                               ),
                               onTap: () {
                                 controller.openDirectory(e);
+                                
                                 Navigator.pop(context);
                               },
                             ))
@@ -257,9 +244,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-

@@ -53,14 +53,18 @@ class RecentFileItemWidger extends StatelessWidget {
                           ),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: AppColor.orangeColor.withOpacity(0.4),
+                            color: AppColor.primaryButtonBgColor.withOpacity(0.4),
                           ),
                         ),
                       )
                     : Container()
               ],
             ),
-            sText(title, AppColor.titleColor, 14.0, FontWeight.w500)
+            // sText(title, AppColor.titleColor, 14.0, FontWeight.w500)
+            SingleLineText(
+              text: title,
+              isTitle: false,
+            ),
           ],
         ),
       ),

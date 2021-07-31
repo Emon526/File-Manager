@@ -1,4 +1,3 @@
-import 'package:filemanager/helpers/colors/app_color.dart';
 import 'package:filemanager/helpers/text/string.dart';
 import 'package:filemanager/helpers/widget/text.dart';
 import 'package:filemanager/screens/files/utils/recentList/recentFileWidget.dart';
@@ -14,9 +13,12 @@ class RecentList extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-            margin: EdgeInsets.only(left: 20.0, top: 15.0, bottom: 15.0),
-            child:
-                sText(RecentFileT, AppColor.titleColor, 17.0, FontWeight.bold)),
+          margin: EdgeInsets.only(left: 20.0, top: 15.0, bottom: 15.0),
+          child: SingleLineText(
+            text: RecentFileT,
+          ),
+        ),
+        // sText(RecentFileT, AppColor.titleColor, 17.0, FontWeight.bold)),
         Container(
           height: 100.0,
           width: size.width,

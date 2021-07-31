@@ -15,11 +15,11 @@ class FileScreen extends StatelessWidget {
         floatingActionButton: Container(
           margin: EdgeInsets.only(bottom: 8.0),
           height: 54.0,
-          child: Icon(Icons.add, color: AppColor.whitColor),
+          child: Icon(Icons.add, color: AppColor.primaryButtonTextColor),
           width: 54.0,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.0),
-            color: AppColor.orangeColor,
+            color: AppColor.primaryButtonBgColor,
           ),
         ),
         body: screenBody(size));
