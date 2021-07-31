@@ -1,3 +1,4 @@
+import 'package:filemanager/controllers/splash_controller/splash_controller.dart';
 import 'package:filemanager/helpers/colors/app_color.dart';
 import 'package:filemanager/helpers/constants/constants.dart';
 import 'package:filemanager/helpers/widget/text.dart';
@@ -28,6 +29,9 @@ class _BodyState extends State<Body> {
       "textp": "keep your files organized more easily"
     },
   ];
+
+  SplashController splashController = Get.put(SplashController());
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -135,6 +139,8 @@ class _BodyState extends State<Body> {
                                         ),
                                       ),
                                       onPressed: () {
+                                        //set first time false
+                                        splashController.saveUserStatus(false);
                                         Get.offNamed('/home');
                                         // Get.toNamed('/home');
                                       },
