@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:filemanager/helpers/colors/app_color.dart';
-import 'package:filemanager/screens/storage/components/storage_model.dart';
+import 'package:filemanager/models/storage_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

@@ -51,5 +51,10 @@ class StorageController extends GetxController {
     return (_usedSpace! / 1024).toPrecision(2);
   }
 
+  // get used space in percentage
+  int getUsedSpacePercent(){
+    return ((_usedSpace! / _totalSpace!) * 100).toInt();
+  }
+
   //
 }

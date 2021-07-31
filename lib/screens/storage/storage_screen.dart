@@ -1,7 +1,7 @@
 import 'package:filemanager/controllers/storage-controller/storage_controller.dart';
 import 'package:filemanager/helpers/colors/app_color.dart';
-import 'package:filemanager/screens/storage/components/storage_chart.dart';
-import 'package:filemanager/screens/storage/components/storage_space_info.dart';
+import 'package:filemanager/screens/storage/components/pie-chart-view/storage_chart.dart';
+import 'package:filemanager/screens/storage/components/pie-chart-view/storage_space_info.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 // import 'package:get/get.dart';
@@ -11,7 +11,6 @@ class StorageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
     return GetBuilder<StorageController>(
       builder: (controller) => SafeArea(
         child: Column(

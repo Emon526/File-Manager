@@ -1,5 +1,5 @@
 import 'package:filemanager/helpers/colors/app_color.dart';
-import 'package:filemanager/screens/storage/components/storage_details_container.dart';
+import 'package:filemanager/screens/storage/components/pie-chart-view/storage_details_container.dart';
 import 'package:flutter/material.dart';
 
 class StorageSpaceInfo extends StatelessWidget {
