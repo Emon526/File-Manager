@@ -18,9 +18,9 @@ class AppColor {
 
 
 
-
-  // static const primaryColor = Color(0xff7064c2);
-  // static const secondaryColor = Color(0xff855797);
+  // splash screen color 
+  static const primarySplashColor = Color(0xff7064c2);
+  static const secondarySplashColor = Color(0xff855797);
 
   // static const blackColor = Color(0xff000000);
   // static const bgColor = Color(0xfff5f5f5);
