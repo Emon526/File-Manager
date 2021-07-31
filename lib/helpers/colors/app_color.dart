@@ -5,6 +5,7 @@ class AppColor {
   // app color
   static const primaryAppColor = Color.fromRGBO(245, 245, 245, 1);
   static const secondaryAppColor = Color.fromRGBO(241, 241, 243, 1);
+  static const freeSpaceColor = Color.fromRGBO(	218, 218, 230, 1);
 
   // button color
   static const primaryButtonBgColor = Color.fromRGBO(251, 121, 85, 1);

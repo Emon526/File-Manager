@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class StorageDetailsContainer extends StatelessWidget {
-  final String title;
-  final double data;
-  final Color color;
+  final String? title;
+  final double? data;
+  final Color? color;
   const StorageDetailsContainer({required this.title, required this.data, required this.color, Key? key}) : super(key: key);
 
   @override
@@ -26,7 +26,7 @@ class StorageDetailsContainer extends StatelessWidget {
           Column(
             children: [
               Text(
-                title,
+                title!,
               ),
               SizedBox(
                 height: 5,

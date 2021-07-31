@@ -3,9 +3,11 @@ import 'package:filemanager/screens/storage/components/storage_details_container
 import 'package:flutter/material.dart';
 
 class StorageSpaceInfo extends StatelessWidget {
-  final double usedData;
-  final double freeData;
-  const StorageSpaceInfo({required this.usedData, required this.freeData, Key? key}) : super(key: key);
+  final double? usedData;
+  final double? freeData;
+  const StorageSpaceInfo(
+      {required this.usedData, required this.freeData, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class StorageSpaceInfo extends StatelessWidget {
         StorageDetailsContainer(
           title: "free",
           data: freeData,
-          color: AppColor.secondaryAppColor,
+          color: AppColor.freeSpaceColor,
         ),
       ],
     );

@@ -22,7 +22,7 @@ class PieChartPaint extends CustomPainter {
     ];
 
     colorList = [
-      AppColor.secondaryAppColor,
+      AppColor.freeSpaceColor,
       AppColor.primaryButtonBgColor,
     ];
   }
@@ -40,7 +40,7 @@ class PieChartPaint extends CustomPainter {
 
     spaceDetails!.forEach((element) => total += element.space!);
 
-    double startRadian = pi / 2;
+    double startRadian = 0;
 
     for (int index = 0; index < spaceDetails!.length; index++) {
       var currentSpace = spaceDetails!.elementAt(index);

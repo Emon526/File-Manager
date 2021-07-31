@@ -135,8 +135,8 @@ class _BodyState extends State<Body> {
                                         ),
                                       ),
                                       onPressed: () {
-                                        // Get.offNamed('/home');
-                                        Get.toNamed('/home');
+                                        Get.offNamed('/home');
+                                        // Get.toNamed('/home');
                                       },
                                       // child: Text(
                                       //   'Let\'s Go',
