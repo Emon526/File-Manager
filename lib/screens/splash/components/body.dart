@@ -1,7 +1,8 @@
+import 'package:filemanager/helpers/colors/app_color.dart';
+import 'package:filemanager/helpers/constants/constants.dart';
+import 'package:filemanager/helpers/widget/text.dart';
 import 'package:flutter/material.dart';
-import 'package:filemanager/constants.dart';
 import 'package:get/get.dart';
-import 'package:filemanager/helpers/colors/App_color.dart';
 
 // This is the best practice
 import '../components/splash_content.dart';
@@ -44,9 +45,9 @@ class _BodyState extends State<Body> {
                 1,
               ],
               colors: [
-                AppColor.primaryColor,
-                AppColor.primaryColor,
-                AppColor.secondaryColor,
+                AppColor.primarySplashColor,
+                AppColor.primarySplashColor,
+                AppColor.secondarySplashColor,
               ]),
         ),
         child: Column(
@@ -115,23 +116,39 @@ class _BodyState extends State<Body> {
                                   child: SizedBox(
                                     width: double.infinity,
                                     height: 56,
-                                    child: FlatButton(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20)),
-                                      // color: AppColor.orangeColor,
-                                      color: Colors.orange,
+                                    child: TextButton(
+                                      // shape: RoundedRectangleBorder(
+                                      //     borderRadius:
+                                      //         BorderRadius.circular(20)),
+                                      // // color: AppColor.orangeColor,
+                                      // color: Colors.orange,
+                                      style: ButtonStyle(
+                                        shape: MaterialStateProperty.all(
+                                          RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                          ),
+                                        ),
+                                        backgroundColor:
+                                            MaterialStateProperty.all(
+                                          AppColor.primaryButtonBgColor,
+                                        ),
+                                      ),
                                       onPressed: () {
-                                        // Get.offNamed('/home');
-                                        Get.toNamed('/home');
+                                        Get.offNamed('/home');
+                                        // Get.toNamed('/home');
                                       },
-                                      child: Text(
-                                        'Let\'s Go',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
+                                      // child: Text(
+                                      //   'Let\'s Go',
+                                      //   textAlign: TextAlign.center,
+                                      //   style: TextStyle(
+                                      //       fontSize: 18,
+                                      //       color: Colors.white,
+                                      //       fontWeight: FontWeight.bold),
+                                      // ),
+                                      child: SingleLineText(
+                                        text: "Let's Go",
+                                        color: AppColor.primaryButtonTextColor,
                                       ),
                                     ),
                                   ),
