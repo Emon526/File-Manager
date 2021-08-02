@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:file_manager/file_manager.dart';
 import 'package:flutter/material.dart';
 
-
 class HomePage extends StatelessWidget {
   final FileManagerController controller = FileManagerController();
 
@@ -149,7 +148,7 @@ class HomePage extends StatelessWidget {
                               ),
                               onTap: () {
                                 controller.openDirectory(e);
-                                
+
                                 Navigator.pop(context);
                               },
                             ))
