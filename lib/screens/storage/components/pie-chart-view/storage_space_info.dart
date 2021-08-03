@@ -1,13 +1,11 @@
+import 'package:filemanager/controllers/storage-controller/storage_controller.dart';
 import 'package:filemanager/helpers/colors/app_color.dart';
 import 'package:filemanager/screens/storage/components/pie-chart-view/storage_details_container.dart';
 import 'package:flutter/material.dart';
+import 'package:get/instance_manager.dart';
 
 class StorageSpaceInfo extends StatelessWidget {
-  final double? usedData;
-  final double? freeData;
-  const StorageSpaceInfo(
-      {required this.usedData, required this.freeData, Key? key})
-      : super(key: key);
+  const StorageSpaceInfo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +14,12 @@ class StorageSpaceInfo extends StatelessWidget {
       children: [
         StorageDetailsContainer(
           title: "Used",
-          data: usedData,
+          data: Get.find<StorageController>().usedSpace,
           color: AppColor.primaryButtonBgColor,
         ),
         StorageDetailsContainer(
           title: "free",
-          data: freeData,
+          data: Get.find<StorageController>().freeSpace,
           color: AppColor.freeSpaceColor,
         ),
       ],

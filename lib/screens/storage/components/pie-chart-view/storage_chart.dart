@@ -1,18 +1,14 @@
-import 'package:filemanager/helpers/config/pie_chart_paint.dart';
+import 'package:filemanager/controllers/storage-controller/storage_controller.dart';
 import 'package:filemanager/helpers/widget/text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/instance_manager.dart';
 
 class StoragePieChart extends StatelessWidget {
-  final double? usedData;
-  final double? freeData;
-  const StoragePieChart(
-      {required this.usedData, required this.freeData, Key? key})
-      : super(key: key);
+  const StoragePieChart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double totalSpace = usedData! + freeData!;
-    int usedPercent = ((usedData! / totalSpace) * 100).toInt();
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height * 0.2,
@@ -28,7 +24,11 @@ class StoragePieChart extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SingleLineText(text: "$usedPercent"),
+                    Obx(
+                      () => SingleLineText(
+                          text:
+                              "${Get.find<StorageController>().spacePercentage}"),
+                    ),
                     SingleLineText(text: "%"),
                   ],
                 ),
@@ -36,7 +36,7 @@ class StoragePieChart extends StatelessWidget {
               ],
             ),
           ),
-          foregroundPainter: PieChartPaint(usedData, freeData, 40.0),
+          foregroundPainter: Get.find<StorageController>().paintPieChart(),
         ),
       ),
     );

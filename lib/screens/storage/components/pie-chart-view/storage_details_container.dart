@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 class StorageDetailsContainer extends StatelessWidget {
   final String? title;
-  final double? data;
+  final RxDouble data;
   final Color? color;
-  const StorageDetailsContainer({required this.title, required this.data, required this.color, Key? key}) : super(key: key);
+  StorageDetailsContainer(
+      {required this.title, required this.data, required this.color, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +35,9 @@ class StorageDetailsContainer extends StatelessWidget {
               SizedBox(
                 height: 5,
               ),
-              Text("$data GB"),
+              Obx(
+                () => Text("${data.toStringAsFixed(2)}GB"),
+              ),
             ],
           ),
         ],

@@ -25,25 +25,24 @@ class HomeScreen extends StatelessWidget {
     //     ),
     //   ),
     // );
-    return GetBuilder<StorageController>(
-      builder: (controller) {
-        return controller.isPermit == true
-            ? DefaultTabController(
-                length: 2,
-                child: Scaffold(
-                  appBar: HomeAppBar.primaryAppBar("Home", 2),
-                  body: TabBarView(
-                    children: [
-                      // Storage tab
-                      StorageScreen(),
-                      // files screen
-                      FileScreen(),
-                    ],
-                  ),
+    return Obx(
+      // ignore: unrelated_type_equality_checks
+      () => Get.find<StorageController>().isPermit == true
+          ? DefaultTabController(
+              length: 2,
+              child: Scaffold(
+                appBar: HomeAppBar.primaryAppBar("Home", 2),
+                body: TabBarView(
+                  children: [
+                    // Storage tab
+                    StorageScreen(),
+                    // files screen
+                    FileScreen(),
+                  ],
                 ),
-              )
-            : CircularProgressIndicator();
-      },
+              ),
+            )
+          : CircularProgressIndicator(),
     );
   }
 }
