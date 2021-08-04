@@ -8,42 +8,32 @@ import 'package:get/get.dart';
 
 class FileScreen extends StatelessWidget {
   FileScreen({Key? key}) : super(key: key);
-  final FileManagerController controller = FileManagerController();
 
   @override
   Widget build(BuildContext context) {
+    FileManagerController controller = FileManagerController();
     Size size = MediaQuery.of(context).size;
-    return WillPopScope(
-        onWillPop: () async {
-          if (await controller.isRootDirectory()) {
-            return true;
-          } else {
-            controller.goToParentDirectory();
-            return false;
-          }
-        },
-        child: Scaffold(
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.centerDocked,
-            floatingActionButton: GestureDetector(
-              onTap: () {
-                createFolder(context);
-              },
-              child: Container(
-                margin: EdgeInsets.only(bottom: 8.0),
-                height: 54.0,
-                child: Icon(Icons.add, color: AppColor.secondaryButtonBgColor),
-                width: 54.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
-                  color: AppColor.primaryButtonBgColor,
-                ),
-              ),
+    return Scaffold(
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: GestureDetector(
+          onTap: () {
+            createFolder(context, controller);
+          },
+          child: Container(
+            margin: EdgeInsets.only(bottom: 8.0),
+            height: 54.0,
+            child: Icon(Icons.add, color: AppColor.secondaryButtonBgColor),
+            width: 54.0,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15.0),
+              color: AppColor.primaryButtonBgColor,
             ),
-            body: screenBody(size)));
+          ),
+        ),
+        body: screenBody(size, controller));
   }
 
-  Widget screenBody(size) {
+  Widget screenBody(size, controller) {
     return SafeArea(
       child: Stack(
         children: [
@@ -57,10 +47,12 @@ class FileScreen extends StatelessWidget {
                   //recent file listveiw
                   RecentList(),
                   //Modify Item Menu
-                  MenuAre(),
+                  MenuAre(controller: controller),
                   //Modify Graidview
 
-                  ModifyList(),
+                  ModifyList(
+                    controller: controller,
+                  ),
                   SizedBox(
                     height: 14.0,
                   )
@@ -75,7 +67,7 @@ class FileScreen extends StatelessWidget {
 
 //create folder dialog
 
-  createFolder(BuildContext context) async {
+  createFolder(BuildContext context, controller) async {
     showDialog(
       barrierDismissible: false,
       context: context,
@@ -91,13 +83,6 @@ class FileScreen extends StatelessWidget {
                   title: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      // Text(
-                      //   "New Folder",
-                      //   textAlign: TextAlign.start,
-                      //   style: TextStyle(
-                      //     color: AppColor.orangeColor,
-                      //   ),
-                      // ),
                       TextField(
                         decoration: InputDecoration(hintText: 'New folder'),
                         textAlign: TextAlign.start,
@@ -115,7 +100,7 @@ class FileScreen extends StatelessWidget {
                         print("Back");
                       },
                       child: Text(
-                        'CANCEL',
+                        'Cancle',
                         style: TextStyle(
                           color: AppColor.primaryButtonBgColor,
                         ),
@@ -124,8 +109,6 @@ class FileScreen extends StatelessWidget {
                     TextButton(
                       onPressed: () async {
                         try {
-                          print("add");
-                          print(context);
                           // Create Folder
                           await FileManager.createFolder(
                               controller.getCurrentPath, folderName.text);

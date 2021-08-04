@@ -26,8 +26,7 @@ class HomeScreen extends StatelessWidget {
     //   ),
     // );
     return Obx(
-      // ignore: unrelated_type_equality_checks
-      () => Get.find<StorageController>().isPermit == true
+      () => Get.find<StorageController>().isPermit.value == true
           ? DefaultTabController(
               length: 2,
               child: Scaffold(
