@@ -1,10 +1,12 @@
+import 'package:file_manager/file_manager.dart';
 import 'package:filemanager/helpers/colors/app_color.dart';
 import 'package:filemanager/helpers/widget/text.dart';
 import 'package:flutter/material.dart';
 import 'package:popup_menu_title/popup_menu_title.dart';
 
 class MenuAre extends StatelessWidget {
-  const MenuAre({Key? key}) : super(key: key);
+  const MenuAre({Key? key, required this.controller}) : super(key: key);
+  final FileManagerController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -39,35 +41,54 @@ class MenuAre extends StatelessWidget {
               ],
             ),
           ),
-          _buildMenuButton()
+          IconButton(
+              onPressed: () => sort(context),
+              icon: Icon(
+                Icons.menu,
+                color: AppColor.primaryTextColor,
+              ))
         ],
       ),
     );
   }
 
-  Widget _buildMenuButton() {
-    return PopupMenuButton(
-      color: AppColor.primaryButtonTextColor,
-      onSelected: (selcted) {
-        print(selcted);
-      },
-      icon: const Icon(Icons.menu),
-      tooltip: 'Show menu',
-      itemBuilder: (context) => [
-        PopupMenuTitle(
-          title: 'Select',
-          overflow: TextOverflow.fade,
-          // The text style below is the default style, but is specified
-          // here as an example of how to do so.
-          textStyle: TextStyle(
-            fontWeight: FontWeight.w600,
-            color: Theme.of(context).primaryColor,
+  sort(BuildContext context) async {
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        child: Container(
+          padding: EdgeInsets.all(10),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                  title: Text("Name"),
+                  onTap: () {
+                    controller.sortedBy = SortBy.name;
+                    Navigator.pop(context);
+                  }),
+              ListTile(
+                  title: Text("Size"),
+                  onTap: () {
+                    controller.sortedBy = SortBy.size;
+                    Navigator.pop(context);
+                  }),
+              ListTile(
+                  title: Text("Date"),
+                  onTap: () {
+                    controller.sortedBy = SortBy.date;
+                    Navigator.pop(context);
+                  }),
+              ListTile(
+                  title: Text("type"),
+                  onTap: () {
+                    controller.sortedBy = SortBy.type;
+                    Navigator.pop(context);
+                  }),
+            ],
           ),
         ),
-        PopupMenuItem<Never>(child: const Text('name')),
-        PopupMenuItem<Never>(child: const Text('size')),
-        PopupMenuItem<Never>(child: const Text('date')),
-      ],
+      ),
     );
   }
 }
