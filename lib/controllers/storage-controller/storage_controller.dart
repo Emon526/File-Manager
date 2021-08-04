@@ -13,6 +13,15 @@ class StorageController extends GetxController {
   var _freeSpace;
   var _usedSpace;
 
+  var allPath;
+  var audioPath;
+  var videoPath;
+  var imagePath;
+  var documentsPath;
+  var downloadPath;
+  var appsPath;
+  var archivesPath;
+
   // observable variables
   var isPermit = false.obs;
   var totalSpace = 0.0.obs;
@@ -30,6 +39,7 @@ class StorageController extends GetxController {
     _getPermission();
     fetchStorageSpace();
     fetchStorageList();
+    setFilePath();
     print("Init selecstoreag: $selectedStorage");
   }
 
@@ -72,6 +82,8 @@ class StorageController extends GetxController {
   // set storage
   setSelectedStorage(entity) {
     selectedStorage.value = entity;
+    print("Current: ${selectedStorage.value}");
+    setFilePath();
   }
 
   // seperate storage base name
@@ -79,5 +91,65 @@ class StorageController extends GetxController {
     return FileManager.basename(entity) == '0'
         ? "Internal Storage"
         : "External Storage";
+  }
+
+  // file path set
+  void setFilePath() {
+    allPath = selectedStorage.value.path;
+    audioPath = selectedStorage.value.path + '/Music';
+    videoPath = selectedStorage.value.path + '/Movies';
+    imagePath = selectedStorage.value.path + '/Pictures';
+    documentsPath = selectedStorage.value.path + '/Documents';
+    downloadPath = selectedStorage.value.path + '/Download';
+    appsPath = selectedStorage.value.path + '/Download';
+    archivesPath = selectedStorage.value.path + '/Download';
+  }
+
+  // image folder
+  imagesFolder() {
+    // fileManagerController.openDirectory(imagePath);
+    print("this is: $imagePath");
+  }
+
+  // video folder
+  videoFolder() {
+    // fileManagerController.openDirectory(imagePath);
+    print("this is: $videoPath");
+  }
+
+  // documents folder
+  documentsFolder() {
+    // fileManagerController.openDirectory(imagePath);
+    print("this is: $documentsPath");
+  }
+
+  // audio folder
+  audioFolder() {
+    // fileManagerController.openDirectory(imagePath);
+    print("this is: $audioPath");
+  }
+
+  // apps folder
+  appsFolder() {
+    // fileManagerController.openDirectory(imagePath);
+    print("this is: $appsPath");
+  }
+
+  // archives folder
+  archivesFolder() {
+    // fileManagerController.openDirectory(imagePath);
+    print("this is: $archivesPath");
+  }
+
+  // download folder
+  downloadFolder() {
+    // fileManagerController.openDirectory(imagePath);
+    print("this is: $downloadPath");
+  }
+
+  // all folder
+  allFolder() {
+    // fileManagerController.openDirectory(imagePath);
+    print("this is: $allPath");
   }
 }

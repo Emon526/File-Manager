@@ -2,6 +2,7 @@ import 'package:filemanager/controllers/storage-controller/binding_storage_contr
 import 'package:filemanager/helpers/themes/app_theme.dart';
 import 'package:filemanager/screens/home/home_screen.dart';
 import 'package:filemanager/screens/splash/splash_screen.dart';
+import 'package:filemanager/screens/storage/folder_inner.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,6 +22,7 @@ class FileManagerApp extends StatelessWidget {
             name: '/home',
             page: () => HomeScreen(),
             binding: BindingStorageController()),
+        GetPage(name: '/folder', page: () => FolderInner()),
       ],
     );
   }

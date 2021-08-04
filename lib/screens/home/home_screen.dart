@@ -1,4 +1,5 @@
 import 'package:filemanager/controllers/storage-controller/storage_controller.dart';
+import 'package:filemanager/screens/components/drawer_widget.dart';
 import 'package:filemanager/screens/components/home_appbar.dart';
 import 'package:filemanager/screens/files/files_screen.dart';
 import 'package:filemanager/screens/storage/storage_screen.dart';
@@ -10,21 +11,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return DefaultTabController(
-    //   length: 2,
-    //   child: Scaffold(
-    //     appBar: HomeAppBar.primaryAppBar("Home", 2),
-    //     body: TabBarView(
-    //       children: [
-    //         // Storage tab
-    //         StorageScreen(),
-    //         Center(
-    //           child: Text('Files'),
-    //         ),
-    //       ],
-    //     ),
-    //   ),
-    // );
     return Obx(
       () => Get.find<StorageController>().isPermit.value == true
           ? DefaultTabController(
@@ -39,6 +25,7 @@ class HomeScreen extends StatelessWidget {
                     FileScreen(),
                   ],
                 ),
+                drawer: DrawerWidget(),
               ),
             )
           : CircularProgressIndicator(),
