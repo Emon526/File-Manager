@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:filemanager/controllers/storage-controller/storage_controller.dart';
 import 'package:filemanager/helpers/colors/app_color.dart';
+import 'package:filemanager/screens/photos/photos_screen.dart';
+import 'package:filemanager/screens/photos/test.dart';
 import 'package:filemanager/screens/storage/components/albums/album_column.dart';
 
 import 'package:filemanager/screens/storage/components/pie-chart-view/storage_chart.dart';
@@ -80,7 +82,8 @@ class StorageScreen extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
-                              Get.find<StorageController>().imagesFolder();
+                              Get.toNamed('/image');
+                              // Get.to(MyApp());
                             },
                             child: AlbumsColumn(
                               titile: "Images",
