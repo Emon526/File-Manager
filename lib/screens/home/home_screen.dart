@@ -2,6 +2,7 @@ import 'package:filemanager/controllers/storage-controller/storage_controller.da
 import 'package:filemanager/screens/components/drawer_widget.dart';
 import 'package:filemanager/screens/components/home_appbar.dart';
 import 'package:filemanager/screens/files/files_screen.dart';
+import 'package:filemanager/screens/loading/loading_screen.dart';
 import 'package:filemanager/screens/storage/storage_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -28,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                 drawer: DrawerWidget(),
               ),
             )
-          : CircularProgressIndicator(),
+          : LoadingScreen(),
     );
   }
 }
