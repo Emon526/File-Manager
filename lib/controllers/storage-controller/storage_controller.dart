@@ -4,6 +4,7 @@ import 'package:disk_space/disk_space.dart';
 import 'package:file_manager/file_manager.dart';
 import 'package:filemanager/helpers/config/permission_settings.dart';
 import 'package:filemanager/helpers/config/pie_chart_paint.dart';
+import 'package:filemanager/screens/storage/folder_inner.dart';
 import 'package:get/get.dart';
 
 class StorageController extends GetxController {
@@ -106,50 +107,53 @@ class StorageController extends GetxController {
   }
 
   // image folder
+  navigatePage(String path) {
+    Get.to(
+      FolderInner(
+        folderPath: Directory(path),
+        baseStorage: selectedStorage.value,
+      ),
+    );
+  }
+
+  // image folder
   imagesFolder() {
-    // fileManagerController.openDirectory(imagePath);
-    print("this is: $imagePath");
+    
+    navigatePage(imagePath);
   }
 
   // video folder
   videoFolder() {
-    // fileManagerController.openDirectory(imagePath);
-    print("this is: $videoPath");
+    navigatePage(videoPath);
   }
 
   // documents folder
   documentsFolder() {
-    // fileManagerController.openDirectory(imagePath);
-    print("this is: $documentsPath");
+    navigatePage(documentsPath);
   }
 
   // audio folder
   audioFolder() {
-    // fileManagerController.openDirectory(imagePath);
-    print("this is: $audioPath");
+    navigatePage(audioPath);
   }
 
   // apps folder
   appsFolder() {
-    // fileManagerController.openDirectory(imagePath);
-    print("this is: $appsPath");
+    navigatePage(appsPath);
   }
 
   // archives folder
   archivesFolder() {
-    // fileManagerController.openDirectory(imagePath);
-    print("this is: $archivesPath");
+    navigatePage(archivesPath);
   }
 
   // download folder
   downloadFolder() {
-    // fileManagerController.openDirectory(imagePath);
-    print("this is: $downloadPath");
+    navigatePage(downloadPath);
   }
 
   // all folder
   allFolder() {
-    // fileManagerController.openDirectory(imagePath);
-    print("this is: $allPath");
+    navigatePage(allPath);
   }
 }
