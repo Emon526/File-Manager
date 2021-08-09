@@ -26,7 +26,7 @@ class HomeAppBar {
             Icons.search,
             color: Colors.grey[700],
           ),
-          onPressed: (){},
+          onPressed: () {},
           // onPressed: () => showSearch(
           //   context: context,
           //   delegate: Data_Search(),

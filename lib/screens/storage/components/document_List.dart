@@ -6,7 +6,7 @@ import 'package:path_provider_ex/path_provider_ex.dart';
 
 //import package files
 
-//apply this class on home: attribute at MaterialApp()
+//apply this class on home: attribute agt MaterialApp()
 class MyDocumentList extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
