@@ -16,13 +16,7 @@ class StorageController extends GetxController {
   var _usedSpace;
 
   var allPath;
-  var audioPath;
-  var videoPath;
-  var imagePath;
-  var documentsPath;
   var downloadPath;
-  var appsPath;
-  var archivesPath;
 
   // observable variables
   var isPermit = false.obs;
@@ -36,6 +30,7 @@ class StorageController extends GetxController {
   var _openResult = "unknown".obs;
 
   var appExtention = ['apk'];
+  var archievesExtention = ['zip', 'rar'];
   var imageExtention = ['jpg', 'png', 'jpeg', 'webp', 'gif'];
   var videoExtention = ['mp4', 'mov', 'mkv', 'avi', 'webm'];
   var audioExtention = [
@@ -131,13 +126,7 @@ class StorageController extends GetxController {
   // file path set
   void setFilePath() {
     allPath = selectedStorage.value.path;
-    audioPath = selectedStorage.value.path + '/Music';
-    videoPath = selectedStorage.value.path + '/Movies';
-    imagePath = selectedStorage.value.path + '/Pictures';
-    documentsPath = selectedStorage.value.path + '/Documents';
     downloadPath = selectedStorage.value.path + '/Download';
-    appsPath = selectedStorage.value.path + '/Download';
-    archivesPath = selectedStorage.value.path + '/Download';
   }
 
   // opening a file on other app
@@ -164,6 +153,8 @@ class StorageController extends GetxController {
       return "doc";
     } else if (audioExtention.contains(fileExtention)) {
       return "audio";
+    } else if (archievesExtention.contains(fileExtention)) {
+      return "archieve";
     } else {
       return "unknown";
     }
@@ -177,36 +168,6 @@ class StorageController extends GetxController {
         baseStorage: selectedStorage.value,
       ),
     );
-  }
-
-  // image folder
-  imagesFolder() {
-    navigatePage(imagePath);
-  }
-
-  // video folder
-  videoFolder() {
-    navigatePage(videoPath);
-  }
-
-  // documents folder
-  documentsFolder() {
-    navigatePage(documentsPath);
-  }
-
-  // audio folder
-  audioFolder() {
-    navigatePage(audioPath);
-  }
-
-  // apps folder
-  appsFolder() {
-    navigatePage(appsPath);
-  }
-
-  // archives folder
-  archivesFolder() {
-    navigatePage(archivesPath);
   }
 
   // download folder

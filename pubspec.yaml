@@ -34,6 +34,8 @@ dependencies:
   photo_gallery: ^1.0.1
   transparent_image: ^2.0.0
   open_file: ^3.2.1
+  flutter_file_manager: ^0.2.0
+  path_provider_ex: ^1.0.1
 
 
 dev_dependencies:

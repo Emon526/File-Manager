@@ -80,7 +80,6 @@ class StorageScreen extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
-                              // Get.find<StorageController>().imagesFolder();
                               Get.toNamed('/image/Images');
                             },
                             child: AlbumsColumn(
@@ -90,7 +89,6 @@ class StorageScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              // Get.find<StorageController>().videoFolder();
                               Get.toNamed('/video/Videos');
                             },
                             child: AlbumsColumn(
@@ -100,7 +98,7 @@ class StorageScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              Get.find<StorageController>().documentsFolder();
+                              Get.toNamed('/document');
                             },
                             child: AlbumsColumn(
                               titile: "Documents",
@@ -109,7 +107,7 @@ class StorageScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              Get.find<StorageController>().audioFolder();
+                              Get.toNamed('/audio');
                             },
                             child: AlbumsColumn(
                               titile: "Audio",
@@ -123,7 +121,7 @@ class StorageScreen extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
-                              Get.find<StorageController>().appsFolder();
+                              Get.toNamed('/apps');
                             },
                             child: AlbumsColumn(
                               titile: "Apps",
@@ -132,7 +130,7 @@ class StorageScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              Get.find<StorageController>().archivesFolder();
+                              Get.toNamed('/archieves');
                             },
                             child: AlbumsColumn(
                               titile: "Archives",

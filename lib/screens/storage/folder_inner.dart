@@ -67,8 +67,9 @@ class FolderInner extends StatelessWidget {
                           return Card(
                             child: ListTile(
                               leading: FileManager.isFile(entities[index])
-                                  ? Get.find<StorageController>().getFileExtention(
-                                              entities.elementAt(index)) ==
+                                  ? Get.find<StorageController>()
+                                              .getFileExtention(
+                                                  entities.elementAt(index)) ==
                                           "app"
                                       ? Icon(
                                           Icons.android,
@@ -81,9 +82,7 @@ class FolderInner extends StatelessWidget {
                                               Icons.image,
                                               size: 35.0,
                                             )
-                                          : Get.find<StorageController>()
-                                                      .getFileExtention(entities
-                                                          .elementAt(index)) ==
+                                          : Get.find<StorageController>().getFileExtention(entities.elementAt(index)) ==
                                                   "video"
                                               ? Icon(
                                                   Icons.video_collection,
@@ -98,16 +97,25 @@ class FolderInner extends StatelessWidget {
                                                       Icons.text_format,
                                                       size: 35.0,
                                                     )
-                                                  : Get.find<StorageController>().getFileExtention(entities.elementAt(index)) ==
+                                                  : Get.find<StorageController>()
+                                                              .getFileExtention(
+                                                                  entities.elementAt(index)) ==
                                                           "audio"
                                                       ? Icon(
                                                           Icons.audiotrack,
                                                           size: 35.0,
                                                         )
-                                                      : Icon(
-                                                          Icons.feed_outlined,
-                                                          size: 35.0,
-                                                        )
+                                                      : Get.find<StorageController>().getFileExtention(entities.elementAt(index)) == "archieve"
+                                                          ? Icon(
+                                                              Icons
+                                                                  .lock_outlined,
+                                                              size: 35.0,
+                                                            )
+                                                          : Icon(
+                                                              Icons
+                                                                  .feed_outlined,
+                                                              size: 35.0,
+                                                            )
                                   : Icon(
                                       Icons.folder,
                                       size: 35.0,
@@ -119,10 +127,6 @@ class FolderInner extends StatelessWidget {
                                   controller.openDirectory(
                                       entities[index]); // open directory
                                 } else {
-                                  print("THis is a: " +
-                                      Get.find<StorageController>()
-                                          .getFileExtention(
-                                              entities.elementAt(index)));
                                   Get.find<StorageController>()
                                       .openFileWithDefaultApp(
                                           entities.elementAt(index));

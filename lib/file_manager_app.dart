@@ -1,6 +1,10 @@
 import 'package:filemanager/controllers/content-controller/content_controller_binding.dart';
 import 'package:filemanager/controllers/storage-controller/binding_storage_controller.dart';
 import 'package:filemanager/helpers/themes/app_theme.dart';
+import 'package:filemanager/screens/apps/apps_screen.dart';
+import 'package:filemanager/screens/archives/archives_screen.dart';
+import 'package:filemanager/screens/audio/audio_List.dart';
+import 'package:filemanager/screens/documents/document_List.dart';
 import 'package:filemanager/screens/home/home_screen.dart';
 import 'package:filemanager/screens/images/image_screen.dart';
 import 'package:filemanager/screens/splash/splash_screen.dart';
@@ -35,6 +39,10 @@ class FileManagerApp extends StatelessWidget {
           page: () => VideoScreen(),
           binding: ContentControllerBinging(),
         ),
+        GetPage(name: '/audio', page: () => MyAudioList()),
+        GetPage(name: '/document', page: () => MyDocumentList()),
+        GetPage(name: '/apps', page: () => AppsScreen()),
+        GetPage(name: '/archieves', page: () => ArchivesScreen()),
       ],
     );
   }
