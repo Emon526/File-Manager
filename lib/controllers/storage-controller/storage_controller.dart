@@ -6,6 +6,7 @@ import 'package:filemanager/helpers/config/permission_settings.dart';
 import 'package:filemanager/helpers/config/pie_chart_paint.dart';
 import 'package:filemanager/screens/storage/folder_inner.dart';
 import 'package:get/get.dart';
+import 'package:open_file/open_file.dart';
 
 class StorageController extends GetxController {
   final FileManagerController fileManagerController = FileManagerController();
@@ -32,6 +33,39 @@ class StorageController extends GetxController {
   RxList<Directory> storageList = RxList<Directory>();
   RxList<Directory> publicFolders = RxList<Directory>();
   Rx<Directory> selectedStorage = Directory("/storage/emulated/0").obs;
+  var _openResult = "unknown".obs;
+
+  var appExtention = ['apk'];
+  var imageExtention = ['jpg', 'png', 'jpeg', 'webp', 'gif'];
+  var videoExtention = ['mp4', 'mov', 'mkv', 'avi', 'webm'];
+  var audioExtention = [
+    'mp3',
+    '3ga',
+    '3gpp',
+    'aa',
+    'aa3',
+    'aac',
+    'aax',
+    'amr',
+    'm4a',
+    'mpc',
+    'wav',
+    'wma',
+    'webm',
+    'wv'
+  ];
+  var docExtention = [
+    'pdf',
+    'doc',
+    'docx',
+    'odt',
+    'xls',
+    'xlsx',
+    'ods',
+    'ppt',
+    'pptx',
+    'txt'
+  ];
 
   // initailizing permission
   @override
@@ -106,6 +140,35 @@ class StorageController extends GetxController {
     archivesPath = selectedStorage.value.path + '/Download';
   }
 
+  // opening a file on other app
+  Future<void> openFileWithDefaultApp(FileSystemEntity fileSystemEntity) async {
+    print("THis is: ${fileSystemEntity.path}");
+    String filePath = fileSystemEntity.path;
+    OpenResult _result = await OpenFile.open(filePath);
+
+    print("Result message: " + _result.message);
+    _openResult.value = "type=${_result.type}  message=${_result.message}";
+  }
+
+  // get file extension
+  String getFileExtention(FileSystemEntity fileSystemEntity) {
+    String fileExtention =
+        fileSystemEntity.path.split('/').last.split('.').last.toLowerCase();
+    if (appExtention.contains(fileExtention)) {
+      return "app";
+    } else if (imageExtention.contains(fileExtention)) {
+      return "image";
+    } else if (videoExtention.contains(fileExtention)) {
+      return "video";
+    } else if (docExtention.contains(fileExtention)) {
+      return "doc";
+    } else if (audioExtention.contains(fileExtention)) {
+      return "audio";
+    } else {
+      return "unknown";
+    }
+  }
+
   // image folder
   navigatePage(String path) {
     Get.to(
@@ -118,7 +181,6 @@ class StorageController extends GetxController {
 
   // image folder
   imagesFolder() {
-    
     navigatePage(imagePath);
   }
 

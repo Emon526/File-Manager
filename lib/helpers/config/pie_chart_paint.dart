@@ -40,12 +40,12 @@ class PieChartPaint extends CustomPainter {
 
     spaceDetails!.forEach((element) => total += element.space!);
 
-    double startRadian = 0;
+    double startRadian = -pi / 2;
 
     for (int index = 0; index < spaceDetails!.length; index++) {
       var currentSpace = spaceDetails!.elementAt(index);
 
-      var sweepRadian = currentSpace.space! / total * 2 * pi;
+      var sweepRadian = -(currentSpace.space! / total * 2 * pi);
 
       paint.color = colorList!.elementAt(index);
 
