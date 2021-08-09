@@ -98,7 +98,7 @@ class StorageScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              Get.find<StorageController>().documentsFolder();
+                              Get.toNamed('/document');
                             },
                             child: AlbumsColumn(
                               titile: "Documents",
@@ -107,7 +107,7 @@ class StorageScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              Get.find<StorageController>().audioFolder();
+                              Get.toNamed('/audio');
                             },
                             child: AlbumsColumn(
                               titile: "Audio",
