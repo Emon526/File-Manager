@@ -109,7 +109,7 @@ class StorageController extends GetxController {
   // image folder
   navigatePage(String path) {
     Get.to(
-      FolderInner(
+      () => FolderInner(
         folderPath: Directory(path),
         baseStorage: selectedStorage.value,
       ),
@@ -118,7 +118,6 @@ class StorageController extends GetxController {
 
   // image folder
   imagesFolder() {
-    
     navigatePage(imagePath);
   }
 

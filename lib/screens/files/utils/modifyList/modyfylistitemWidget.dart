@@ -32,11 +32,9 @@ class ModifyListItemWidget extends StatelessWidget {
                   color: AppColor.secondaryTextColor,
                   size: 80,
                 ),
-
           SizedBox(
             height: 8.0,
           ),
-         
           SingleLineText(
             text: FileManager.basename(entity),
           ),
