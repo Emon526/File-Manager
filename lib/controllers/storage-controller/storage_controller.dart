@@ -4,9 +4,13 @@ import 'package:disk_space/disk_space.dart';
 import 'package:file_manager/file_manager.dart';
 import 'package:filemanager/helpers/config/permission_settings.dart';
 import 'package:filemanager/helpers/config/pie_chart_paint.dart';
+import 'package:filemanager/models/recent_model.dart';
 import 'package:filemanager/screens/storage/folder_inner.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:open_file/open_file.dart';
+import 'package:get_storage/get_storage.dart';
 
 class StorageController extends GetxController {
   final FileManagerController fileManagerController = FileManagerController();
@@ -62,6 +66,16 @@ class StorageController extends GetxController {
     'txt'
   ];
 
+  //recent file
+  var recentList = <RecentModel>[];
+  final box = GetStorage();
+  final _getStorage = GetStorage();
+  Map storageLis = {};
+
+  //theming
+  var isDarkTheme = false.obs;
+  final themeStorage = GetStorage();
+
   // initailizing permission
   @override
   void onInit() {
@@ -71,6 +85,23 @@ class StorageController extends GetxController {
     fetchStorageList();
     setFilePath();
     print("Init selecstoreag: $selectedStorage");
+
+    //recent file call
+    if (isDataAvailable()) {
+      print("Yes recent data  available");
+      restoreTasks();
+    } else {
+      print("recent data not available");
+    }
+
+    // theming call
+    if (isSavedDark()) {
+      isDarkTheme = true.obs;
+      print("Dark Mode");
+    } else {
+      isDarkTheme = false.obs;
+      print("light Mode");
+    }
   }
 
   // request for storage permission
@@ -137,6 +168,11 @@ class StorageController extends GetxController {
 
     print("Result message: " + _result.message);
     _openResult.value = "type=${_result.type}  message=${_result.message}";
+
+    RecentModel recentModel =
+        RecentModel(key: UniqueKey().toString(), path: filePath);
+    addAndStoreTask(recentModel);
+    
   }
 
   // get file extension
@@ -179,4 +215,82 @@ class StorageController extends GetxController {
   allFolder() {
     navigatePage(allPath);
   }
+
+// recent file operation
+  void addAndStoreTask(RecentModel task) {
+    recentList.add(task);
+
+    final Map storageMap = {};
+
+    storageMap['name'] = task.path;
+    storageMap['key'] = task.key;
+
+    storageLis[task.key] = storageMap;
+    box.write('tasks', storageLis);
+    print("Worked");
+    update();
+  }
+
+  void restoreTasks() {
+    storageLis = box.read('tasks');
+
+    storageLis.forEach((key, value) {
+      final task = RecentModel(path: value['name'], key: key);
+
+      recentList.add(task);
+    });
+
+    update();
+  }
+
+  Future<void> recentopenFileWithDefaultApp(String path) async {
+    OpenResult _result = await OpenFile.open(path);
+
+    print("Result message: " + _result.message);
+    _openResult.value = "type=${_result.type}  message=${_result.message}";
+
+    print("Open");
+  }
+
+  //data avaible or no
+  bool isDataAvailable() {
+    print("Read data");
+    return _getStorage.read("data") ?? false;
+  }
+
+  void saveDataAvailable(bool isData) {
+    _getStorage.write("data", isData);
+  }
+
+  //new user
+  void changeAppTheme(state) {
+    if (state == true) {
+      isDarkTheme = true.obs;
+      Get.changeTheme(ThemeData.dark());
+      saveThemeData(isDarkTheme.value);
+      print("Dark Mode");
+    } else {
+      isDarkTheme = false.obs;
+      Get.changeTheme(ThemeData.light());
+      print("Light Mode");
+      saveThemeData(isDarkTheme.value);
+    }
+  }
+
+  ThemeData getThemeData() {
+    print("Got Theme");
+    return isSavedDark() ? ThemeData.dark() : ThemeData.light();
+  }
+
+  bool isSavedDark() {
+    print("Read Theme");
+    return themeStorage.read("theme") ?? false;
+  }
+
+  void saveThemeData(bool isDark) {
+    themeStorage.write("theme", isDark);
+  }
+
+  //is new user or not
+
 }

@@ -1,4 +1,5 @@
 import 'package:filemanager/controllers/storage-controller/storage_controller.dart';
+import 'package:filemanager/helpers/colors/app_color.dart';
 import 'package:filemanager/helpers/widget/text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
@@ -29,7 +30,7 @@ class StoragePieChart extends StatelessWidget {
                           text:
                               "${Get.find<StorageController>().spacePercentage}"),
                     ),
-                    SingleLineText(text: "%"),
+                    SingleLineText(text: "%", color: Colors.black),
                   ],
                 ),
                 SingleLineText(text: "Used"),

@@ -39,10 +39,9 @@ class FileScreen extends StatelessWidget {
         children: [
           SingleChildScrollView(
             child: Container(
-              width: size.width,
               height: size.height,
+              width: size.width,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //recent file listveiw
                   RecentList(),

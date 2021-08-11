@@ -4,6 +4,7 @@ import 'package:get/instance_manager.dart';
 class ContentControllerBinging extends Bindings {
   @override
   void dependencies() {
+
     Get.lazyPut(() => ImageController());
   }
 }

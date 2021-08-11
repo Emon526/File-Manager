@@ -1,10 +1,14 @@
 import 'dart:io';
 
+import 'package:filemanager/controllers/storage-controller/storage_controller.dart';
+import 'package:filemanager/models/recent_model.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:open_file/open_file.dart';
 import 'package:photo_gallery/photo_gallery.dart';
 
 class ImageController extends GetxController {
+  StorageController storageController = Get.put(StorageController());
   // all albums will store in _albums
   List<Album> _albums = [];
   MediaPage? _mediaPage;
@@ -48,6 +52,11 @@ class ImageController extends GetxController {
 
     print("Result message: " + _result.message);
     _openResult.value = "type=${_result.type}  message=${_result.message}";
+
+    RecentModel recentModel =
+        RecentModel(key: UniqueKey().toString(), path: file.path);
+    storageController.addAndStoreTask(recentModel);
+    storageController.saveDataAvailable(true);
   }
 
   // return albums
