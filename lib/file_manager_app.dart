@@ -48,10 +48,22 @@ class FileManagerApp extends StatelessWidget {
           page: () => VideoScreen(),
           binding: ContentControllerBinging(),
         ),
-        GetPage(name: '/audio', page: () => MyAudioList()),
-        GetPage(name: '/document', page: () => MyDocumentList()),
-        GetPage(name: '/apps', page: () => AppsScreen()),
-        GetPage(name: '/archieves', page: () => ArchivesScreen()),
+        GetPage(
+          name: '/audio',
+          page: () => MyAudioList(),
+        ),
+        GetPage(
+          name: '/document',
+          page: () => MyDocumentList(),
+        ),
+        GetPage(
+          name: '/apps',
+          page: () => AppsScreen(),
+        ),
+        GetPage(
+          name: '/archieves',
+          page: () => ArchivesScreen(),
+        ),
       ],
     );
   }

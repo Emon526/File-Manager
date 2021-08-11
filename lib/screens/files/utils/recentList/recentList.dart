@@ -55,13 +55,17 @@ class RecentList extends StatelessWidget {
                           if (temp.contains(".jpg") || temp.contains(".png")) {
                             imageUrl = "assets/icons/Images.png";
                           } else if (temp.contains(".doc") ||
-                              temp.contains(".pdf")) {
+                              temp.contains(".pdf") ||
+                              temp.contains(".txt") ||
+                              temp.contains(".ppt")) {
                             imageUrl = "assets/icons/Document.png";
                           } else if (temp.contains(".mp4")) {
                             imageUrl = "assets/icons/Vedio.png";
                           } else if (temp.contains(".mp3") ||
                               temp.contains(".mve")) {
                             imageUrl = "assets/icons/Audio.png";
+                          } else if (temp.contains(".apk")) {
+                            imageUrl = "assets/icons/Apps.png";
                           } else {
                             imageUrl = "assets/icons/files.png";
                           }

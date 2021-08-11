@@ -17,7 +17,6 @@ class StorageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Column(
         children: [
@@ -91,15 +90,15 @@ class StorageScreen extends StatelessWidget {
                               imagePath: "assets/icons/Images.png",
                             ),
                           ),
-          InkWell(
-            onTap: () {
-              Get.toNamed('/video/Videos');
-            },
-            child: AlbumsColumn(
-              titile: "Video",
-              imagePath: "assets/icons/Vedio.png",
-            ),
-          ),
+                          InkWell(
+                            onTap: () {
+                              Get.toNamed('/video/Videos');
+                            },
+                            child: AlbumsColumn(
+                              titile: "Video",
+                              imagePath: "assets/icons/Vedio.png",
+                            ),
+                          ),
                           InkWell(
                             onTap: () {
                               Get.toNamed('/document');

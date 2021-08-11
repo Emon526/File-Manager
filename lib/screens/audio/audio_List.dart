@@ -1,8 +1,11 @@
 import 'dart:io';
+import 'package:filemanager/controllers/storage-controller/storage_controller.dart';
+import 'package:filemanager/models/recent_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_file_manager/flutter_file_manager.dart';
+import 'package:get/get.dart';
 import 'package:open_file/open_file.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:path_provider_ex/path_provider_ex.dart';
@@ -66,6 +69,8 @@ class _MyAudioList extends State<MyAudioList> {
 
   @override
   Widget build(BuildContext context) {
+    StorageController storageController = Get.put(StorageController());
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Audio"),
@@ -87,7 +92,12 @@ class _MyAudioList extends State<MyAudioList> {
                     size: 35.0,
                   ),
                   onTap: () {
-                    openFile(files[index].path);
+                    openFile(files[index].path).whenComplete(() {
+                      RecentModel recentModel = RecentModel(
+                          key: UniqueKey().toString(), path: files[index].path);
+                      storageController.addAndStoreTask(recentModel);
+                    });
+                    
                   },
                 ));
               },
