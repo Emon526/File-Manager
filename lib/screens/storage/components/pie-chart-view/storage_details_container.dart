@@ -29,14 +29,13 @@ class StorageDetailsContainer extends StatelessWidget {
           ),
           Column(
             children: [
-              Text(
-                title!,
-              ),
+              Text(title!, style: TextStyle(color: Colors.black)),
               SizedBox(
                 height: 5,
               ),
               Obx(
-                () => Text("${data.toStringAsFixed(2)}GB"),
+                () => Text("${data.toStringAsFixed(2)}GB",
+                    style: TextStyle(color: Colors.black)),
               ),
             ],
           ),

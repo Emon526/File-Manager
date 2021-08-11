@@ -1,5 +1,7 @@
 import 'package:filemanager/controllers/content-controller/content_controller_binding.dart';
+import 'package:filemanager/controllers/splash_controller/splash_controller.dart';
 import 'package:filemanager/controllers/storage-controller/binding_storage_controller.dart';
+import 'package:filemanager/controllers/storage-controller/storage_controller.dart';
 import 'package:filemanager/helpers/themes/app_theme.dart';
 import 'package:filemanager/screens/apps/apps_screen.dart';
 import 'package:filemanager/screens/archives/archives_screen.dart';
@@ -17,13 +19,20 @@ class FileManagerApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    StorageController storageController = Get.put(StorageController());
+    SplashController splashController = Get.put(SplashController());
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: lightTheme,
+      theme: storageController.getThemeData(),
+      darkTheme: darkTheme,
       initialRoute: '/',
       defaultTransition: Transition.zoom,
       getPages: [
-        GetPage(name: '/', page: () => SplashScreen()),
+        GetPage(
+            name: '/',
+            page: () =>
+                splashController.isOldYser() ? HomeScreen() : SplashScreen(),
+            binding: BindingStorageController()),
         GetPage(
           name: '/home',
           page: () => HomeScreen(),

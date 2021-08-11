@@ -35,7 +35,7 @@ class RecentFileItemWidger extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12.0),
                     child: Image.asset(
                       imageUrl,
-                      fit: BoxFit.fill,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
@@ -53,7 +53,8 @@ class RecentFileItemWidger extends StatelessWidget {
                           ),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: AppColor.primaryButtonBgColor.withOpacity(0.4),
+                            color:
+                                AppColor.primaryButtonBgColor.withOpacity(0.4),
                           ),
                         ),
                       )
@@ -61,9 +62,13 @@ class RecentFileItemWidger extends StatelessWidget {
               ],
             ),
             // sText(title, AppColor.titleColor, 14.0, FontWeight.w500)
-            SingleLineText(
-              text: title,
-              isTitle: false,
+            Container(
+              alignment: Alignment.center,
+              width: 100.0,
+              child: SingleLineText(
+                text: title,
+                isTitle: false,
+              ),
             ),
           ],
         ),

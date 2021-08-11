@@ -1,3 +1,4 @@
+import 'package:filemanager/controllers/splash_controller/splash_controller.dart';
 import 'package:filemanager/helpers/colors/app_color.dart';
 import 'package:filemanager/helpers/constants/constants.dart';
 import 'package:filemanager/helpers/widget/text.dart';
@@ -31,6 +32,7 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    SplashController storageController = Get.put(SplashController());
     return Container(
       height: size.height,
       width: size.width,
@@ -74,7 +76,7 @@ class _BodyState extends State<Body> {
 
               child: Container(
                 child: Padding(
-                  padding: EdgeInsets.all(55),
+                  padding: EdgeInsets.all(40.0),
                   child: Column(
                     children: [
                       Row(
@@ -85,7 +87,7 @@ class _BodyState extends State<Body> {
                         ),
                       ),
                       Expanded(
-                        flex: 3,
+                        flex: 4,
                         child: PageView.builder(
                           onPageChanged: (value) {
                             setState(() {
@@ -102,47 +104,43 @@ class _BodyState extends State<Body> {
                       ),
                       Expanded(
                         flex: 2,
-                        child: Padding(
-                          padding: EdgeInsets.all(
-                            10,
-                            // horizontal: getProportionateScreenWidth(20)
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Spacer(flex: 3),
-                              Card(
+                        child: Column(
+                          children: <Widget>[
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            SizedBox(
+                              width: double.infinity,
+                              height: 54.0,
+                              child: Card(
                                 elevation: 15,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20)),
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  height: 56,
-                                  child: TextButton(
-                                    style: ButtonStyle(
-                                      shape: MaterialStateProperty.all(
-                                        RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                      ),
-                                      backgroundColor:
-                                          MaterialStateProperty.all(
-                                        AppColor.primaryButtonBgColor,
+                                child: TextButton(
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
                                     ),
-                                    onPressed: () {
-                                      Get.offNamed('/home');
-                                      // Get.toNamed('/home');
-                                    },
-                                    child: SingleLineText(
-                                      text: "Let's Go",
-                                      color: AppColor.primaryButtonTextColor,
+                                    backgroundColor: MaterialStateProperty.all(
+                                      AppColor.primaryButtonBgColor,
                                     ),
+                                  ),
+                                  onPressed: () {
+                                    storageController.saveolduser(true);
+                                    Get.offNamed('/home');
+                                    // Get.toNamed('/home');
+                                  },
+                                  child: SingleLineText(
+                                    isTitle: true,
+                                    text: "Let's Go",
+                                    color: AppColor.primaryButtonTextColor,
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ],

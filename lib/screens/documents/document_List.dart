@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_file_manager/flutter_file_manager.dart';
 import 'package:open_file/open_file.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:path_provider_ex/path_provider_ex.dart';
 
 //import package files
@@ -17,6 +19,7 @@ class MyDocumentList extends StatefulWidget {
 
 class _MyDocumentList extends State<MyDocumentList> {
   var files;
+  // ignore: unused_field
   var _openResult = "unknown";
 
   void getFiles() async {

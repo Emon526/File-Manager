@@ -29,7 +29,7 @@ class StoragePieChart extends StatelessWidget {
                           text:
                               "${Get.find<StorageController>().spacePercentage}"),
                     ),
-                    SingleLineText(text: "%"),
+                    SingleLineText(text: "%", color: Colors.black),
                   ],
                 ),
                 SingleLineText(text: "Used"),
