@@ -14,13 +14,13 @@ class AlbumsColumn extends StatelessWidget {
           Container(
             height: 50,
             width: 50,
-            padding: EdgeInsets.all(5),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Color(0xFFBBC8F8)),
             child: Image.asset(
               imagePath,
-              height: 40,
+
+              fit: BoxFit.cover,
               // color: Colors.grey[400],
             ),
           ),
@@ -29,7 +29,7 @@ class AlbumsColumn extends StatelessWidget {
           ),
           Text(
             titile,
-            style: TextStyle(color: Colors.grey[600]),
+            style: TextStyle(color: Colors.grey),
           )
         ],
       ),

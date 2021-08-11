@@ -17,6 +17,7 @@ class StorageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
       child: Column(
         children: [
@@ -36,6 +37,7 @@ class StorageScreen extends StatelessWidget {
                   children: [
                     Obx(
                       () => DropdownButton<Directory>(
+                        dropdownColor: Colors.white,
                         value:
                             Get.find<StorageController>().selectedStorage.value,
                         items: Get.find<StorageController>()
@@ -43,7 +45,9 @@ class StorageScreen extends StatelessWidget {
                             .map(
                               (e) => DropdownMenuItem(
                                 child: Text(
-                                    "${Get.find<StorageController>().getStorageName(e)}"),
+                                  "${Get.find<StorageController>().getStorageName(e)}",
+                                  style: TextStyle(color: Colors.black),
+                                ),
                                 value: e,
                               ),
                             )
@@ -84,25 +88,25 @@ class StorageScreen extends StatelessWidget {
                             },
                             child: AlbumsColumn(
                               titile: "Images",
-                              imagePath: "assets/images/Images.png",
+                              imagePath: "assets/icons/Images.png",
                             ),
                           ),
-                          InkWell(
-                            onTap: () {
-                              Get.toNamed('/video/Videos');
-                            },
-                            child: AlbumsColumn(
-                              titile: "Video",
-                              imagePath: "assets/images/Vedio.png",
-                            ),
-                          ),
+          InkWell(
+            onTap: () {
+              Get.toNamed('/video/Videos');
+            },
+            child: AlbumsColumn(
+              titile: "Video",
+              imagePath: "assets/icons/Vedio.png",
+            ),
+          ),
                           InkWell(
                             onTap: () {
                               Get.toNamed('/document');
                             },
                             child: AlbumsColumn(
                               titile: "Documents",
-                              imagePath: "assets/images/Document.png",
+                              imagePath: "assets/icons/Document.png",
                             ),
                           ),
                           InkWell(
@@ -111,7 +115,7 @@ class StorageScreen extends StatelessWidget {
                             },
                             child: AlbumsColumn(
                               titile: "Audio",
-                              imagePath: "assets/images/Audio.png",
+                              imagePath: "assets/icons/Audio.png",
                             ),
                           ),
                         ],
@@ -125,7 +129,7 @@ class StorageScreen extends StatelessWidget {
                             },
                             child: AlbumsColumn(
                               titile: "Apps",
-                              imagePath: "assets/images/Apps.png",
+                              imagePath: "assets/icons/Apps.png",
                             ),
                           ),
                           InkWell(
@@ -134,7 +138,7 @@ class StorageScreen extends StatelessWidget {
                             },
                             child: AlbumsColumn(
                               titile: "Archives",
-                              imagePath: "assets/images/Archives.png",
+                              imagePath: "assets/icons/Archives.png",
                             ),
                           ),
                           InkWell(
@@ -143,7 +147,7 @@ class StorageScreen extends StatelessWidget {
                             },
                             child: AlbumsColumn(
                               titile: "Download",
-                              imagePath: "assets/images/download.png",
+                              imagePath: "assets/icons/download.png",
                             ),
                           ),
                           InkWell(
@@ -152,7 +156,7 @@ class StorageScreen extends StatelessWidget {
                             },
                             child: AlbumsColumn(
                               titile: "All",
-                              imagePath: "assets/images/All.png",
+                              imagePath: "assets/icons/Alll.png",
                             ),
                           ),
                         ],

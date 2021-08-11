@@ -17,8 +17,9 @@ class HomeScreen extends StatelessWidget {
           ? DefaultTabController(
               length: 2,
               child: Scaffold(
-                appBar: HomeAppBar.primaryAppBar("Home", 2),
+                appBar: HomeAppBar.primaryAppBar("Home", 2,context),
                 body: TabBarView(
+                  physics: BouncingScrollPhysics(),
                   children: [
                     // Storage tab
                     StorageScreen(),
